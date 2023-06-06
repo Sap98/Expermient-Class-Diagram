@@ -137,6 +137,27 @@ if(ex.options[ex.selectedIndex].value==3){
 
 }
 
+function removerowuc(btndel) {
+
+  if (typeof(btndel) == "object") {
+
+       $(btndel).closest("li").remove();
+  }
+  else{
+    return false;
+  }
+}
+function removerow(btndel) {
+
+  if (typeof(btndel) == "object") {
+
+       $(btndel).closest("tr").remove();
+  }
+  else{
+    return false;
+  }
+}
+
 var attribute = [];
 function create_select_options()
 {
@@ -220,11 +241,17 @@ function create_select_options()
   var cid1 = "Class" + input_from_table_1;
   var cell1 = document.createElement("td");
   cell1.setAttribute("id",cid1);
+
+  var newIconbtn = document.createElement("img");
+  newIconbtn.setAttribute("src","./images/remove.png");
+  newIconbtn.setAttribute("onclick", "removerow(this)");
+  newIconbtn.setAttribute("style","cursor:pointer;");
   
   cell1.textContent = input_from_table_1;
   cell1.style.fontWeight = "bold";
   cell1.style.fontSize = "larger";
   cell1.style.textAlign = "center";
+  cell1.appendChild(newIconbtn);
   newRow.appendChild(cell1);
 
   var cid2 = "Attributes" + input_from_table_1;
@@ -243,26 +270,7 @@ function create_select_options()
   
 }
 
-function removerowuc(btndel) {
 
-  if (typeof(btndel) == "object") {
-
-       $(btndel).closest("li").remove();
-  }
-  else{
-    return false;
-  }
-}
-function removerow(btndel) {
-
-  if (typeof(btndel) == "object") {
-
-       $(btndel).closest("tr").remove();
-  }
-  else{
-    return false;
-  }
-}
 
 
 function create_attribute()
@@ -457,6 +465,8 @@ function create_row_in_table_8()
   cell7.setAttribute("id",cid7);
   cell7.textContent = select_association_direction;
   newRow.appendChild(cell7);
+
+  newRow.appendChild(newIconbtn);
 
   table8.appendChild(newRow);
 
