@@ -286,7 +286,7 @@ Author: 1. Prakriti Dhang
                     </thead>
                     <tbody>
                       <tr>
-                        <td><select class="form-select" name="" id="table_2_select_class"><option value=""></option></select></td>
+                        <td><select class="form-select" name="" id="table_2_select_class"><option disabled selected value="">Select a Class</option></select></td>
                         <td><input placeholder="Enter an attribute" class="form-control border-primary " type="text" id="inp2"></td>
                         <td><select class="form-select" name="" id="table_2_type">
                           <option value="">Integer</option>
@@ -320,9 +320,9 @@ Author: 1. Prakriti Dhang
                     </thead>
                     <tbody>
                       <tr>
-                        <td><select class="form-select" name="" id="table_3_select_class"><option value=""></option></select></td>
-                        <td><input placeholder="Enter an operation" class="form-control border-primary " type="text" id="inp1"></td>
-                        <td><select class="form-select" name="" id="table_2_type">
+                        <td><select class="form-select" name="" id="table_3_select_class"><option disabled selected value="">Select a Class</option></select></td>
+                        <td><input placeholder="Enter an operation" class="form-control border-primary " type="text" id="inp3"></td>
+                        <td><select class="form-select" name="" id="table_3_type">
                           <option value="">Void</option>
                           <option value="">Integer</option>
                           <option value="">Float</option>
@@ -332,7 +332,7 @@ Author: 1. Prakriti Dhang
                           <option value="">Boolean</option>
                         </select></td>
                         <td style="text-align: center;"><button id="t1addbtn" class="btn btn-primary" type="button"
-                            onclick="addbtnt1()"><i class="bi bi-plus-lg"></i>Add</button></td>
+                            onclick="create_operations()"><i class="bi bi-plus-lg"></i>Add</button></td>
                       </tr>
                     </tbody>
 
@@ -353,13 +353,13 @@ Author: 1. Prakriti Dhang
                     </thead>
                     <tbody>
                       <tr>
-                        <td><select class="form-select" name="" id=""><option value=""></option></select></td>
+                        <td><select class="form-select" name="" id="table_4_0_select_class"><option disabled selected value="">Select a Sub-Class</option></select></td>
                         <td id="Extends">Extends</td>
-                        <td><select class="form-select" name="" id="table_2_type">
-                          
+                        <td><select class="form-select" name="" id="table_4_1_select_class">
+                          <option disabled selected value="">Select a Super-Class</option>
                         </select></td>
                         <td style="text-align: center;"><button id="t1addbtn" class="btn btn-primary" type="button"
-                            onclick="addbtnt1()"><i class="bi bi-plus-lg"></i>Add</button></td>
+                            onclick="create_row_in_table_7()"><i class="bi bi-plus-lg"></i>Add</button></td>
                       </tr>
                     </tbody>
 
@@ -384,8 +384,8 @@ Author: 1. Prakriti Dhang
                     </thead>
                     <tbody>
                       <tr>
-                        <td><select class="form-select" id="table_5.0_select_class" name="" ><option value=""></option></select></td>
-                        <td><select class="form-select" name="" >
+                        <td><select class="form-select" id="table_5_0_select_class" name="" ><option disabled selected value="">Select a Class</option></select></td>
+                        <td><select class="form-select" id="multiplicity" name="" >
                           <option value="">Not Specified</option>
                           <option value="">1</option>
                           <option value="">2</option>
@@ -394,15 +394,15 @@ Author: 1. Prakriti Dhang
                           <option value="">1..*</option>
                           <option value="">*</option>
                         </select></td>
-                        <td><input class="form-control border-primary " type="text" id="inp1"></td>
-                        <td><select class="form-select" name="" id="table_2_type">
+                        <td><input class="form-control border-primary " type="text" id="association"></td>
+                        <td><select class="form-select" name="" id="association_type">
                           <option value="">Simple Association</option>
                           <option value="">Navigation Association (to)</option>
                           <option value="">Aggregation</option>
                           <option value="">Composition</option>
                           <option value="">Dependency</option>
                           </select></td>
-                          <td><select class="form-select" name="" >
+                          <td><select class="form-select" id="multiplicity_2" name="" >
                             <option value="">Not Specified</option>
                             <option value="">1</option>
                             <option value="">2</option>
@@ -411,14 +411,14 @@ Author: 1. Prakriti Dhang
                             <option value="">1..*</option>
                             <option value="">*</option>
                           </select></td>
-                          <td><select class="form-select" name="" >
+                          <td><select class="form-select" id="association_direction" name="" >
                             <option value="">Not Specified</option>
                             <option value="">TO</option>
                             <option value="">FROM</option>
                             </select></td>
-                          <td><select class="form-select" name="" id="table_5.1_select_class"></select></td>
+                          <td><select class="form-select" name="" id="table_5_1_select_class"><option disabled selected value="">Select a Class</option></select></td>
                         <td style="text-align: center;"><button id="t1addbtn" class="btn btn-primary" type="button"
-                            onclick="addbtnt1()"><i class="bi bi-plus-lg"></i>Add</button></td>
+                            onclick="create_row_in_table_8()"><i class="bi bi-plus-lg"></i>Add</button></td>
                       </tr>
                     </tbody>
 
@@ -457,10 +457,11 @@ Author: 1. Prakriti Dhang
                     <thead>
                       <th>Sub-class</th>
                       <th>Super-class</th>
+                      <th>Remove</th>
                       
                       
                     </thead>
-                    <tbody>
+                    <tbody id ="tbl7_body">
                       
                     </tbody>
 
@@ -484,7 +485,7 @@ Author: 1. Prakriti Dhang
                       
                       
                     </thead>
-                    <tbody>
+                    <tbody id="tbl8_body">
                       
                     </tbody>
 
@@ -784,6 +785,7 @@ Author: 1. Prakriti Dhang
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.1/backbone.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jointjs/3.6.5/joint.js"></script>
+  
 </body>
 
 </html>

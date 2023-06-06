@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="./ml.css">
+  
+</head>
+<body>
+  <div id="editor">
+    <textarea id="code-input" placeholder="Write your Python code here"></textarea>
+    <button id="run-button">Run</button>
+  </div>
+
+  <div id="output">
+    <pre id="console"></pre>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+  <script type="text/javascript">
+    async function main(){
+      let pyodide = await loadPyodide();
+      console.log(pyodide.runPython(`
+          import sys
+          sys.version
+      `));
+      pyodide.runPython("print(1 + 2)");
+    }
+    main();
+  </script>
+</body>
+</html>
