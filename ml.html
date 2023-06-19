@@ -1,30 +1,203 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <link rel="stylesheet" type="text/css" href="./ml.css">
-  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./ml.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.23.2/full/pyodide.js"></script>
 </head>
+
 <body>
-  <div id="editor">
-    <textarea id="code-input" placeholder="Write your Python code here"></textarea>
-    <button id="run-button">Run</button>
+
+  <header id="header">
+    <div class="container p-3">
+      <div class="card">
+        <div class="row">
+          <div class="col-md-2">
+            <img src="../images/vlabs-logo.png" class=" rounded img-fluid" alt="vlabs-logo">
+          </div>
+          <div class="col-md-8 p-4">
+            <p class="h2 fw-bold text-primary text-center">
+              DataSage: Empowering Insights for the Intelligent Future</p>
+          </div>
+          <div class="col-md-2">
+            <img src="../images/iitkgp-logo.png" class=" rounded img-fluid" alt="iitkgplogo">
+            <br>
+            <p style="margin-left: 45px; color: rgb(39, 5, 111)"><strong>IIT Kharagpur</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div id="author">
+    Designed By
+    <br>
+    Saptarshi Mondal
+    <br>
+    CSE Department, IIT Kharagpur
+
   </div>
 
-  <div id="output">
-    <pre id="console"></pre>
+  <!--------------------------------------------------Front Page------------------------------------------------------------>
+
+  <div id="Page_1.0" class="container p-2">
+    <hr>
+    <p class="h3 fw-bold fst-italic text-center" style="color: #000283;"> Unleash the Power of Data: Revolutionize Your
+      World with Data Science
+    </p>
+    <hr>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
-  <script type="text/javascript">
-    async function main(){
-      let pyodide = await loadPyodide();
-      console.log(pyodide.runPython(`
-          import sys
-          sys.version
-      `));
-      pyodide.runPython("print(1 + 2)");
-    }
-    main();
-  </script>
+  <div id="Page_1.1" class="container mt-2 p-3">
+
+    <div class="d-flex flex-column justify-content-center mb-3 ">
+      <div class="row">
+        <div class="col-md-4">
+          <p class="fs-5 fw-bold" style="color: brown;">Uncover Data's Secrets: Empowering Python-Powered Data Science
+            Exploration.</p>
+          <p style="text-align: justify;"> Discover the power of data and unlock valuable insights with our
+            comprehensive range of data science resources and services. Whether you're a beginner or an experienced data
+            professional, our platform is designed to empower you on your data-driven journey.
+          </p>
+          <p style="text-align: justify;">Explore our cutting-edge tools and technologies that enable efficient data
+            collection, processing, analysis, and visualization. Harness the potential of machine learning and
+            artificial intelligence to tackle complex problems and make data-driven decisions that drive innovation and
+            growth.</p>
+          <p style="text-align: justify;">
+            Join our vibrant community of data enthusiasts, where knowledge sharing and
+            collaboration thrive. Engage in latest data-science related practise problems, and stay up to date
+            with the latest trends and advancements in the field of data science. </p>
+
+          <p style="text-align: justify;">No matter your background or level of expertise, our goal is to make data
+            science accessible and enjoyable for everyone. Start your data science journey today and unlock the endless
+            possibilities that lie within your data.
+          </p>
+
+          <p style="text-align: justify; font-size: large"><strong>Empower yourself with data. Explore. Innovate.
+              Succeed.</strong></p>
+
+
+        </div>
+
+        <div class="col-md-8">
+
+          <img id="DS_image" src="./images/manhattan-g13f9e42cf_1280.jpg">
+
+
+
+        </div>
+      </div>
+
+      <hr>
+
+      <a class="btn btn-primary fs-4" target="_blank" onclick="open_getstarted()" role="button"><strong>GET STARTED
+          NOW!</strong></a>
+      <hr>
+    </div>
+  </div>
+
+  <!-------------------------------------------------------Second Page----------------------------------------------------------------->
+  <div id="Page_2.0_navbar" class="container p-2" style="display:none">
+    <hr>
+    <div class="h3 fw-bold fst-italic text-center" style="color: #000283;">
+      <div style="align-items: center">
+        <button class="btn btn-primary btn-lg button" onclick="open_Page_1()">Home</button>
+        <button class="btn btn-primary btn-lg button">Topics</button>
+        <button class="btn btn-primary btn-lg button" onclick="open_editor()">Editor</button>
+        <button class="btn btn-primary btn-lg button" onclick="open_about()">About</button>
+        <button class="btn btn-primary btn-lg">Help</button>
+
+      </div>
+    </div>
+    <hr>
+  </div>
+
+  <div id="Page_2.1" class="container p-2" style="display:none">
+    <p><strong>Welcome to our data science platform for students!</strong> On this second page, we are thrilled to guide you further in
+      your data science journey. Data science is a rapidly growing field with immense potential. It equips individuals
+      with the ability to extract valuable insights from data and make informed decisions across various industries.
+      </p>
+      
+      <p>Here, we provide you with a roadmap to success, starting from foundational concepts and advancing towards more
+        advanced topics. Along this path, you will discover essential tools and technologies such as Python and data
+        visualization libraries. We encourage you to gain practical experience through hands-on projects and exercises, as
+        it is crucial to mastering data science. Additionally, we have curated additional resources including books,
+        blogs, podcasts, and online courses to deepen your understanding and broaden your horizons. Embrace this
+        opportunity to unlock your data science potential and embark on an exciting journey of learning and growth.</p>
+      <br>
+
+
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./images/engineer-4927728_1280.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="./images/company-3034968_1280.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="./images/spirituality-3221955_1280.jpg" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+
+      <p style="font-size:large; text-align: center"><strong>HOPE YOU HAVE A GREAT JOURNEY AHEAD!!</strong></p>
+  </div>
+  <!------------------------------------------------------About Page--------------------------------------------------------------------------->
+
+
+  <div id="about" style="display:none" class="container p-3 ">
+    <div class="row">
+      <div class="col-md-12">
+        <p>This is project is an initiative by IIT Kharagpur which comes
+          under <strong>'VIRTUAL LABS PROJECT(PHASE-III EXTENDED)'</strong>, sponsored by MHRD, Department of Higher
+          Education, NMEICT, New Delhi(NEW DELHI) undertaken in the Mechanical Engineering - Technical. The Principal
+          Investigators of this project are: Prof. Soumitra Paul(HoD of Mechanical Dept. IIT Kharagpur), Prof.
+          Anandaroop Bhattacharya(Mechanical Dept, IIT Kharagpur)</p>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div id="editor" style="display:none">
+    <textarea name="" id="input_code" rows="10000" placeholder="Write your Python Code here"></textarea>
+  </div>
+  <div class="d-grid gap-2 col-6 mx-auto" style="margin-left:100px; align-items: center">
+    <button id="run" onclick="execute()" class="btn btn-dark btn-lg" type="button"
+      style="display:none; margin-left:70px">Run</button>
+  </div>
+  <textarea style="margin-left:100px; margin-right:100px; margin-top: 20px; display:none" id="output"
+    rows="50"></textarea>
+
+
+
+
+
+  <script src="./ml.js"></script>
 </body>
+
 </html>

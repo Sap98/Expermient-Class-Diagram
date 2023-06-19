@@ -158,17 +158,20 @@ function removerow(btndel) {
   }
 }
 
-var attribute = [];
+
+var class_dictionary = {};
+var class_names_array = [];
 function create_select_options()
 {
     
   var input_from_table_1 = document.getElementById("inp1").value;
+  //attributes.push(input_from_table_1);
   document.getElementById("inp1").value = "";
   
   var flag = 0;
-  for (let i = 0; i<attribute.length; i++)
+  for (let i = 0; i<class_names_array.length; i++)
   {
-    if (input_from_table_1 === attribute[i])
+    if (input_from_table_1 === class_names_array[i])
     {
       flag = 1;
       break;
@@ -180,8 +183,8 @@ function create_select_options()
     alert("You have already entered that Class.");
   }
   else{
-    attribute.push(input_from_table_1);
-  }
+    class_names_array.push(input_from_table_1);
+  
 
   var select_element_2 = document.getElementById("table_2_select_class");
   var select_element_3 = document.getElementById("table_3_select_class");
@@ -267,6 +270,7 @@ function create_select_options()
   newRow.appendChild(cell3);
   
   table6.appendChild(newRow);
+  }
   
 }
 
@@ -277,9 +281,20 @@ function create_attribute()
 {
   var input_from_table_2 = document.getElementById("inp2").value;
   document.getElementById("inp2").value = "";
+  
 
   var table_2_select_class = document.getElementById("table_2_select_class");
   var select_class_value = table_2_select_class.options[table_2_select_class.selectedIndex].value;
+
+  if(!(select_class_value in class_dictionary))
+  {
+    class_dictionary[select_class_value]=[];
+    class_dictionary[select_class_value].push(input_from_table_2);
+  }
+  else{
+    class_dictionary[select_class_value].push(input_from_table_2);
+  }
+  
 
   var table_2_type = document.getElementById("table_2_type");
   var select_type = table_2_type.options[table_2_type.selectedIndex].text;
@@ -310,6 +325,7 @@ function create_attribute()
    newLi.appendChild(newIconbtn);
 
 }
+
 
 function create_operations()
 {
@@ -470,6 +486,50 @@ function create_row_in_table_8()
 
   table8.appendChild(newRow);
 
+}
+
+function drawbtex1()
+{
+  document.getElementById("dispuml1").style.display = "block";
+
+  var namespace = joint.shapes;
+
+        var graph = new joint.dia.Graph({}, { cellNamespace: namespace });
+
+        paper = new joint.dia.Paper({
+            el: document.getElementById('class_diag_ex1'),
+            model: graph,
+          
+           
+            background: {
+                color: '#ffffff', //'rgba(0, 255, 0, 0.3)'
+            },
+            
+            cellViewNamespace: namespace
+        });
+
+  for( var i = 0; i < class_names_array.length; i++)
+  {      
+
+    var objs = new joint.shapes.standard.Rectangle();
+          
+          objs.position(15, 46);
+          objs.resize(100, 40);
+          objs.attr({
+              body: {
+                  //text: class_dictionary[document.getElementById("table_2_select_class").options[document.getElementById("table_2_select_class").selectedIndex].value],
+                  fill: '#FFFC8C',
+                  strokeWidth: 2,
+                  //stroke:'#B90000'
+              },
+              label: {
+                  text: class_names_array[i++],
+                  fill: 'black',
+                  fontSize: 16
+              }
+          });
+          objs.addTo(graph);
+  }
 }
 
 
